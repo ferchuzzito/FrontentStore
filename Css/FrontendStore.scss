@@ -1,0 +1,264 @@
+$Cprimario: rgb(156, 39, 176);
+$CprimarioOscuro: rgb(137, 17, 157);
+$Csecundario: rgb(255, 206, 0);
+$CsecundarioOscuro: rgb(233, 255, 2);
+$Cblanco: rgb(255, 255, 255);
+$Cnegro: rgb(0, 0, 0);
+$fuentePrincipal:'Staatliches',
+cursive;
+
+html {
+     box-sizing: border-box;
+     font-size: 62.5%;
+}
+
+* {
+     box-sizing: inherit;
+
+     &::before {
+          box-sizing: inherit;
+     }
+
+     &::after {
+          box-sizing: inherit;
+     }
+}
+
+/*Globales*/
+body {
+     background-color: $Cprimario;
+     font-size: 1.6rem;
+     line-height: 1.5;
+}
+
+p {
+     font-size: 1.8rem;
+     font-family: Arial, Helvetica, sans-serif;
+     color: $Cblanco;
+}
+
+a {
+     text-decoration: none;
+}
+
+img {
+     width: 100%;
+}
+
+.contenedor {
+     max-width: 120rem;
+     margin: 0 auto;
+}
+
+@mixin headers {
+     text-align: center;
+     color: $Csecundario;
+     font-family: $fuentePrincipal;
+}
+
+@mixin ScreenSize {
+     @media (min-width: 768px) {
+          @content;
+     }
+}
+
+h1 {
+     @include headers;
+     font-size: 4rem;
+}
+
+h2 {
+     @include headers;
+     font-size: 3.2rem;
+}
+
+h3 {
+     @include headers;
+     font-size: 2.4rem;
+}
+
+/*Header*/
+.header {
+     display: flex;
+     justify-content: center;
+
+     &__logo {
+          margin: 3rem 0;
+     }
+}
+
+.navegacion {
+     background-color: $CprimarioOscuro;
+     padding: 1rem 0;
+     display: flex;
+     justify-content: center;
+     /*gap: 2rem;*/
+     //nueva forma de separar elementos con flexbox
+
+     &__enlace {
+          font-family: $fuentePrincipal;
+          color: $Cblanco;
+          font-size: 3rem;
+          margin: 0 1rem; //solucion a gap en navegadores no soportados
+
+          &:hover {
+               color: $Csecundario;
+          }
+
+          &--activo {
+               color: $Csecundario;
+          }
+     }
+}
+
+/*Grid*/
+.grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     column-gap: 2rem;
+     row-gap: 2rem;
+
+     @include ScreenSize {
+          grid-template-columns: repeat(3, 1fr);
+     }
+}
+
+/*Productos*/
+.producto {
+     background-color: $CprimarioOscuro;
+     padding: 1rem;
+     text-align: center;
+
+     &__imagen {
+          width: 100%;
+     }
+
+     &__nombre {
+          font-size: 4rem;
+          font-family: $fuentePrincipal;
+          margin: 1rem 0;
+     }
+
+     &__precio {
+          font-size: 2.8rem;
+          color: $Csecundario;
+          font-family: $fuentePrincipal;
+          margin: 1rem 0;
+          line-height: 1.2;
+     }
+}
+
+/*Graficos*/
+.grafico {
+     min-height: 30rem;
+     background-repeat: no-repeat;
+     background-size: cover;
+     grid-column: 1 / 3;
+
+     &--camisas {
+          grid-row: 2 / 3;
+          background-image: url(../img/grafico1.jpg);
+     }
+
+     &--node {
+          grid-row: 8 / 9;
+          background-image: url(../img/grafico2.jpg);
+
+          @include ScreenSize {
+               grid-row: 5 / 6;
+               grid-column: 2 / 4;
+          }
+     }
+}
+
+
+/*Footer*/
+.footer {
+     background-color: $CprimarioOscuro;
+     padding: 1rem 0;
+     margin-top: 2rem;
+
+     &__texto {
+          text-align: center;
+          font-family: $fuentePrincipal;
+          font-size: 2.2rem;
+     }
+}
+
+/*Nosotros*/
+.nosotros {
+     display: grid;
+     grid-template-rows: repeat(2, auto);
+
+     @include ScreenSize {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 2rem;
+     }
+
+     &__imagen {
+          grid-row: 1 / 2;
+          width: 100%;
+
+          @include ScreenSize {
+               grid-column: 2 / 3;
+          }
+     }
+}
+
+.bloques {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 2rem;
+
+     @include ScreenSize {
+          grid-template-columns: repeat(4, 1fr);
+     }
+}
+
+.bloque {
+     text-align: center;
+
+     &__titulo {
+          margin: 0;
+     }
+
+     &__imagen {
+          width: 100%;
+     }
+}
+
+/*Producto*/
+.camisa{
+     @include ScreenSize {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 2rem;
+     }
+}
+.formulario{
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 2rem;
+     &__campo{
+          border: 1rem solid $CprimarioOscuro;
+          background-color: transparent;
+          color: $Cblanco;
+          font-size: 2rem;
+          font-family: Arial, Helvetica, sans-serif;
+          appearance: none;
+     }
+     &__submit{
+          background-color: $Csecundario;
+          border: none;
+          font-size: 2rem;
+          font-family: $fuentePrincipal;
+          padding: 2rem;
+          transition: background-color 300ms ease;
+          grid-column: 1/ 3;
+          &:hover{
+               cursor: pointer;
+               background-color: $CsecundarioOscuro;
+          }
+     }
+}
+
