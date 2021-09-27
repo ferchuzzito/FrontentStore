@@ -111,6 +111,14 @@ h3 {
      }
 }
 
+.mostrar-seccion {
+     display: block !important;
+}
+
+.section {
+     display: none;
+}
+
 /*Grid*/
 .grid {
      display: grid;
@@ -228,18 +236,20 @@ h3 {
 }
 
 /*Producto*/
-.camisa{
+.camisa {
      @include ScreenSize {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           column-gap: 2rem;
      }
 }
-.formulario{
+
+.formulario {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      gap: 2rem;
-     &__campo{
+
+     &__campo {
           border: 1rem solid $CprimarioOscuro;
           background-color: transparent;
           color: $Cblanco;
@@ -247,7 +257,8 @@ h3 {
           font-family: Arial, Helvetica, sans-serif;
           appearance: none;
      }
-     &__submit{
+
+     &__submit {
           background-color: $Csecundario;
           border: none;
           font-size: 2rem;
@@ -255,10 +266,10 @@ h3 {
           padding: 2rem;
           transition: background-color 300ms ease;
           grid-column: 1/ 3;
-          &:hover{
+
+          &:hover {
                cursor: pointer;
                background-color: $CsecundarioOscuro;
           }
      }
 }
-
