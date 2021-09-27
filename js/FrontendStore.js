@@ -78,17 +78,24 @@ function mostrarSeccion() {
      if (seccionAnterior) {
           seccionAnterior.classList.remove('mostrar-seccion');
      }
+     console.log(seccionAnterior);
 
      const seccionActual = document.querySelector(`#menu-${pagina}`);
      seccionActual.classList.add('mostrar-seccion');
 
+     console.log(seccionActual);
+
      // Eliminar la clase de actual en el tab anterior
-     const tabAnterior = document.querySelector('.navegacion__enlace navegacion__enlace--activo');
+     const tabAnterior = document.querySelector('.navegacion__enlace--activo');
      if (tabAnterior) {
           tabAnterior.classList.remove('navegacion__enlace--activo');
      }
 
+     console.log(tabAnterior);
+
      // Resalta el Tab Actual
      const tab = document.querySelector(`[data-menu="${pagina}"]`);
      tab.classList.add('navegacion__enlace--activo');
+
+     console.log(tab);
 }
